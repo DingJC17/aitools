@@ -1,4 +1,4 @@
-﻿import { LeadForm } from '@/components/LeadForm';
+import { LeadForm } from '@/components/LeadForm';
 import { WechatCTA } from '@/components/WechatCTA';
 
 const deliverables = ['Python 脚本', '本地 exe 工具', 'Web 工具', '企微 / 飞书 / 钉钉机器人', 'Docker 私有化部署'];

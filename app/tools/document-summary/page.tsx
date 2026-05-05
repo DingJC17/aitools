@@ -1,4 +1,4 @@
-﻿import { DocumentSummaryForm } from '@/components/forms/DocumentSummaryForm';
+import { DocumentSummaryForm } from '@/components/forms/DocumentSummaryForm';
 
 export default function DocumentSummaryPage() {
   return (

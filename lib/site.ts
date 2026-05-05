@@ -1,4 +1,4 @@
-﻿import { ToolCardItem } from '@/types';
+import { ToolCardItem } from '@/types';
 
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'AI 自动化工具箱';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';

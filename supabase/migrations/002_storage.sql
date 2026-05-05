@@ -1,4 +1,4 @@
-﻿insert into storage.buckets (id, name, public)
+insert into storage.buckets (id, name, public)
 values ('trial-uploads', 'trial-uploads', false)
 on conflict (id) do nothing;
 

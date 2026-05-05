@@ -1,4 +1,4 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { fail, ok, summarizeDocument } from '@/lib/ai';
 import { extractTextFromFile } from '@/lib/documents/extract-text';
 import { getMaxDailyTrialsPerTool } from '@/lib/env';

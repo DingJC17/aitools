@@ -1,1 +1,1 @@
-﻿export { parsePptx } from './extract-text';
+export { parsePptx } from './extract-text';

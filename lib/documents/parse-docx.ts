@@ -1,1 +1,1 @@
-﻿export { parseDocx } from './extract-text';
+export { parseDocx } from './extract-text';

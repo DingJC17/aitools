@@ -1,4 +1,4 @@
-﻿import { DocumentSummaryMode } from '@/types';
+import { DocumentSummaryMode } from '@/types';
 import { getMaxFileSizeBytes, getMaxTextInputChars } from '@/lib/env';
 import { trimLines } from '@/lib/utils';
 

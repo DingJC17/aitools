@@ -1,4 +1,4 @@
-﻿export default function DisclaimerPage() {
+export default function DisclaimerPage() {
   return (
     <main className="section-shell">
       <div className="container-shell max-w-4xl">

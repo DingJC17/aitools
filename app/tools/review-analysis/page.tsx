@@ -1,4 +1,4 @@
-﻿import { ReviewAnalysisForm } from '@/components/forms/ReviewAnalysisForm';
+import { ReviewAnalysisForm } from '@/components/forms/ReviewAnalysisForm';
 
 export default function ReviewAnalysisPage() {
   return (

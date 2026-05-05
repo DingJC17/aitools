@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import Image from 'next/image';
 import type { Route } from 'next';
 import { Github, Menu, MessageSquare } from 'lucide-react';

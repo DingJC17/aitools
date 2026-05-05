@@ -1,4 +1,4 @@
-﻿const buckets = new Map<string, { count: number; resetAt: number }>();
+const buckets = new Map<string, { count: number; resetAt: number }>();
 
 export function checkRateLimit(key: string, limit: number, windowMs = 24 * 60 * 60 * 1000) {
   const now = Date.now();

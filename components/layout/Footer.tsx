@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import { siteConfig } from '@/lib/site';
 
 export function Footer() {

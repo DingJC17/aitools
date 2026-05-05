@@ -1,4 +1,4 @@
-﻿import { siteConfig } from '@/lib/site';
+import { siteConfig } from '@/lib/site';
 
 export function getBaseUrl() {
   return siteConfig.url.replace(/\/$/, '');

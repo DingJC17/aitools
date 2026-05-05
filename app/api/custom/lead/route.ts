@@ -1,4 +1,4 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { saveLead, trackContactClick } from '@/lib/tracking';
 
 function required(body: Record<string, unknown>, keys: string[]) {

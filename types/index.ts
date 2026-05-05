@@ -1,4 +1,4 @@
-﻿import type { Route } from 'next';
+import type { Route } from 'next';
 
 export type ToolKey = 'document-extract' | 'document-summary' | 'review-analysis';
 

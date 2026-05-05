@@ -1,4 +1,4 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { analyzeReviews, fail, ok } from '@/lib/ai';
 import { getMaxDailyTrialsPerTool } from '@/lib/env';
 import { checkRateLimit } from '@/lib/rateLimit';

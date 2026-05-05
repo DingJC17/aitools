@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import { ArrowRight, Bot, FileSpreadsheet, FileText, MessageSquareText } from 'lucide-react';
 import { WechatCTA } from '@/components/WechatCTA';
 import { ToolCard } from '@/components/ToolCard';

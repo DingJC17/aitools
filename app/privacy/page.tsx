@@ -1,4 +1,4 @@
-﻿export default function PrivacyPage() {
+export default function PrivacyPage() {
   return (
     <main className="section-shell">
       <div className="container-shell max-w-4xl">

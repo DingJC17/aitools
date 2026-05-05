@@ -1,4 +1,4 @@
-﻿import { ToolCard } from '@/components/ToolCard';
+import { ToolCard } from '@/components/ToolCard';
 import { toolCards } from '@/lib/site';
 
 export default function ToolsPage() {

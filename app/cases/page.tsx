@@ -1,4 +1,4 @@
-﻿import { CaseStudySection } from '@/components/sections/CaseStudySection';
+import { CaseStudySection } from '@/components/sections/CaseStudySection';
 import { WechatCTA } from '@/components/WechatCTA';
 
 export default function CasesPage() {

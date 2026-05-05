@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 import { siteConfig } from '@/lib/site';
 import { Footer } from '@/components/layout/Footer';

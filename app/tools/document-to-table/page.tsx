@@ -1,4 +1,4 @@
-﻿import { DocumentExtractForm } from '@/components/forms/DocumentExtractForm';
+import { DocumentExtractForm } from '@/components/forms/DocumentExtractForm';
 
 export default function DocumentToTablePage() {
   return (
