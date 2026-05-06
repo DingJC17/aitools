@@ -8,7 +8,7 @@ export async function checkUserUsage(tool: string) {
     if (!user) return { allowed: false, blocked: true, message: '请先登录后使用工具' };
 
     const admin = createAdminClient();
-    const { count } = await admin.from('tool_usages').select('*', { count: 'exact', head: true }).eq('user_id', user.id).eq('tool', tool);
+    const { count } = await admin.from('tool_usages').select('*', { count: 'exact', head: true }).eq('user_id', user.id).eq('tool_name', tool);
     const used = count || 0;
     const max = tool === 'brainstorm' ? 1 : 3;
     const remaining = max - used;
@@ -29,6 +29,6 @@ export async function recordUserUsage(tool: string) {
     if (!user) return;
 
     const admin = createAdminClient();
-    await admin.from('tool_usages').insert({ user_id: user.id, tool, ip_hash: '' });
+    await admin.from('tool_usages').insert({ user_id: user.id, tool_name: tool, ip_hash: '' });
   } catch { /* non-critical */ }
 }

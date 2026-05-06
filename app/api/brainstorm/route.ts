@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     }
 
     const admin = createAdminClient();
-    const { count } = await admin.from('tool_usages').select('*', { count: 'exact', head: true }).eq('user_id', user.id).eq('tool', 'brainstorm');
+    const { count } = await admin.from('tool_usages').select('*', { count: 'exact', head: true }).eq('user_id', user.id).eq('tool_name', 'brainstorm');
     if ((count || 0) >= 1) {
       return NextResponse.json({ success: false, message: '头脑风暴仅限使用 1 次' }, { status: 403 });
     }
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     const isDone = body.messages.length >= 5 || reply.includes('【需求确认】');
 
     if (isDone) {
-      await admin.from('tool_usages').insert({ user_id: user.id, tool: 'brainstorm', ip_hash: '' });
+      await admin.from('tool_usages').insert({ user_id: user.id, tool_name: 'brainstorm', ip_hash: '' });
     }
 
     return NextResponse.json({ success: true, data: { reply, done: isDone, remaining: isDone ? 0 : 1 } });

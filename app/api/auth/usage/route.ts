@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   }
 
   const admin = createAdminClient();
-  const { count } = await admin.from('tool_usages').select('*', { count: 'exact', head: true }).eq('user_id', user.id).eq('tool', tool);
+  const { count } = await admin.from('tool_usages').select('*', { count: 'exact', head: true }).eq('user_id', user.id).eq('tool_name', tool);
   const used = count || 0;
   const max = tool === 'brainstorm' ? 1 : 3;
   return NextResponse.json({ success: true, data: { used, max, remaining: max - used } });
