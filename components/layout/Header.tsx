@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Route } from 'next';
-import { Github, Menu, MessageSquare } from 'lucide-react';
+import { Github, LogOut, Menu, MessageSquare, User } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
+import { useAuth } from '@/components/AuthProvider';
 
 const navItems: Array<{ href: Route; label: string }> = [
   { href: '/', label: '首页' },
@@ -37,13 +38,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Link href="/tools" className="btn-secondary">
-            免费试用
-          </Link>
-          <Link href="/custom" className="btn-primary">
-            <MessageSquare className="mr-2 h-4 w-4" />
-            添加微信定制
-          </Link>
+          <UserMenu />
         </div>
 
         <Link href="/tools" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white lg:hidden">
@@ -51,5 +46,28 @@ export function Header() {
         </Link>
       </div>
     </header>
+  );
+}
+
+
+function UserMenu() {
+  const { user, loading, signOut } = useAuth();
+  if (loading) return null;
+  if (!user) {
+    return (
+      <>
+        <Link href="/tools" className="btn-secondary">免费试用</Link>
+        <Link href="/auth/login" className="btn-secondary">登录</Link>
+        <Link href="/custom" className="btn-primary"><MessageSquare className="mr-2 h-4 w-4" />添加微信定制</Link>
+      </>
+    );
+  }
+  return (
+    <>
+      <span className="text-sm text-slate-600">{user.email}</span>
+      <Link href="/tools" className="btn-secondary">免费试用</Link>
+      <button onClick={signOut} className="btn-secondary inline-flex items-center gap-1"><LogOut className="h-4 w-4" />退出</button>
+      <Link href="/custom" className="btn-primary"><MessageSquare className="mr-2 h-4 w-4" />添加微信定制</Link>
+    </>
   );
 }

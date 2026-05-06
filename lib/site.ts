@@ -36,6 +36,14 @@ export const toolCards: ToolCardItem[] = [
     highlights: ['支持 PDF / DOCX / PPTX', '会议纪要与汇报提纲', '办公自动化场景'],
   },
   {
+    key: 'brainstorm',
+    title: 'AI 头脑风暴',
+    description: '通过多轮 AI 对话梳理项目需求，帮你明确方向、确认方案。',
+    href: '/tools/brainstorm',
+    trialLimit: '每个账号 1 次',
+    highlights: ['多轮引导对话', '需求确认输出', '定制方向建议'],
+  },
+  {
     key: 'review-analysis',
     title: 'AI 商品评论分析',
     description: '粘贴用户评论或反馈，快速归纳差评原因、购买动机和营销卖点。',

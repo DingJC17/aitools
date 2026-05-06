@@ -3,6 +3,7 @@ import './globals.css';
 import { siteConfig } from '@/lib/site';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { AuthProvider } from '@/components/AuthProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -26,10 +27,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <body>
-        <Header />
-        {children}
-        <Footer />
+      <body className="bg-mist text-ink font-sans antialiased">
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

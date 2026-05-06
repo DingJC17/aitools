@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import { fail, ok, summarizeDocument } from '@/lib/ai';
 import { extractTextFromFile } from '@/lib/documents/extract-text';
-import { getMaxDailyTrialsPerTool } from '@/lib/env';
-import { checkRateLimit } from '@/lib/rateLimit';
-import { getRequestMeta, trackToolUsage } from '@/lib/tracking';
+import { checkUserUsage, recordUserUsage } from '@/lib/rateLimit';
 import { assertFileSize, assertSummaryFileType, assertSummaryMode, assertTextLimit } from '@/lib/validators';
 
 export async function POST(request: Request) {
@@ -14,7 +12,6 @@ export async function POST(request: Request) {
     const contentType = request.headers.get('content-type') || '';
     let mode = 'general';
     let content = '';
-    let inputType = 'text';
 
     if (contentType.includes('multipart/form-data')) {
       const formData = await request.formData();
@@ -27,7 +24,6 @@ export async function POST(request: Request) {
 
       fileName = file.name;
       fileSize = file.size;
-      inputType = file.type;
       assertFileSize(file.size);
       assertSummaryFileType(file.type);
       content = await extractTextFromFile(file);
@@ -39,33 +35,17 @@ export async function POST(request: Request) {
     }
 
     const normalizedMode = assertSummaryMode(mode);
-    const meta = await getRequestMeta();
-    const rate = checkRateLimit(`${meta.ipHash}:document-summary`, getMaxDailyTrialsPerTool('document-summary'));
-    if (!rate.allowed) {
-      return NextResponse.json(fail('今日试用次数已用完，请明天再试或添加微信沟通定制'), { status: 429 });
+    const usage = await checkUserUsage('document-summary');
+    if (usage.blocked) {
+      return NextResponse.json(fail(usage.message || ""), { status: 429 });
     }
 
     const result = await summarizeDocument(normalizedMode, content);
-    await trackToolUsage({
-      toolName: 'document-summary',
-      inputType,
-      inputLength: content.length,
-      fileName,
-      fileSize,
-      success: true,
-    });
+    await recordUserUsage('document-summary');
 
-    return NextResponse.json(ok(result, { remaining: rate.remaining, fileName, fileSize }));
+    return NextResponse.json(ok(result, { remaining: usage.remaining || 0, fileName, fileSize }));
   } catch (error) {
     const message = error instanceof Error ? error.message : '处理失败，请稍后重试';
-    await trackToolUsage({
-      toolName: 'document-summary',
-      inputType: 'mixed',
-      fileName,
-      fileSize,
-      success: false,
-      errorMessage: message,
-    });
     return NextResponse.json(fail(message), { status: 400 });
   }
 }
