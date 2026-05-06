@@ -1,6 +1,6 @@
 import type { Route } from 'next';
 
-export type ToolKey = 'document-extract' | 'document-summary' | 'review-analysis';
+export type ToolKey = 'document-extract' | 'document-summary' | 'review-analysis' | 'brainstorm';
 
 export type ToolCardItem = {
   key: ToolKey;
