@@ -11,7 +11,7 @@ export function UserMenu() {
     return (
       <>
         <Link href="/tools" className="btn-secondary">免费试用</Link>
-        <Link href="/auth/login" className="btn-secondary">登录</Link>
+        <Link href="/auth" className="btn-secondary">登录</Link>
         <Link href="/custom" className="btn-primary"><MessageSquare className="mr-2 h-4 w-4" />添加微信定制</Link>
       </>
     );
