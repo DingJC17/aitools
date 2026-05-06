@@ -8,7 +8,7 @@ import type { ApiResponse } from '@/types';
 
 interface Message { role: 'user' | 'assistant'; content: string }
 
-let supabase;
+let supabase: ReturnType<typeof createBrowserClient>;
 function getSupabase() {
   if (!supabase) supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
   return supabase;
